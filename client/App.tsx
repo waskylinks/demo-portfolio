@@ -19,18 +19,18 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <ThemeProvider defaultTheme="light" storageKey="freelancer-theme">
-        <Layout>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
+        <BrowserRouter>
+          <Layout>
+            <Toaster />
+            <Sonner />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
-        </Layout>
+          </Layout>
+        </BrowserRouter>
       </ThemeProvider>
     </TooltipProvider>
   </QueryClientProvider>
