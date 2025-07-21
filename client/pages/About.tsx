@@ -1,35 +1,38 @@
-import { CheckCircle, Download, MapPin, Mail, Phone } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { CheckCircle, Download, MapPin, Mail, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const skills = [
-  'React & Next.js',
-  'TypeScript',
-  'Node.js & Express',
-  'Python & Django',
-  'UI/UX Design',
-  'Mobile Development',
-  'Cloud Architecture',
-  'Database Design',
+  "React & Next.js",
+  "TypeScript",
+  "Node.js & Express",
+  "Python & Django",
+  "UI/UX Design",
+  "Mobile Development",
+  "Cloud Architecture",
+  "Database Design",
 ];
 
 const experience = [
   {
-    title: 'Senior Full-Stack Developer',
-    company: 'TechCorp Solutions',
-    period: '2021 - Present',
-    description: 'Led development of enterprise web applications serving 100k+ users. Mentored junior developers and established best practices.',
+    title: "Senior Full-Stack Developer",
+    company: "TechCorp Solutions",
+    period: "2021 - Present",
+    description:
+      "Led development of enterprise web applications serving 100k+ users. Mentored junior developers and established best practices.",
   },
   {
-    title: 'Frontend Developer',
-    company: 'Creative Digital Agency',
-    period: '2019 - 2021',
-    description: 'Developed responsive websites and web applications for various clients. Specialized in React and modern frontend technologies.',
+    title: "Frontend Developer",
+    company: "Creative Digital Agency",
+    period: "2019 - 2021",
+    description:
+      "Developed responsive websites and web applications for various clients. Specialized in React and modern frontend technologies.",
   },
   {
-    title: 'Junior Developer',
-    company: 'StartupHub',
-    period: '2018 - 2019',
-    description: 'Built MVPs and prototypes for early-stage startups. Gained experience in rapid development and agile methodologies.',
+    title: "Junior Developer",
+    company: "StartupHub",
+    period: "2018 - 2019",
+    description:
+      "Built MVPs and prototypes for early-stage startups. Gained experience in rapid development and agile methodologies.",
   },
 ];
 
@@ -45,12 +48,12 @@ export default function About() {
                 Hi, I'm Alex
               </h1>
               <p className="mt-6 text-xl text-muted-foreground">
-                A passionate full-stack developer with 5+ years of experience 
+                A passionate full-stack developer with 5+ years of experience
                 creating digital solutions that make a difference.
               </p>
               <p className="mt-4 text-lg text-muted-foreground">
-                I specialize in building modern, scalable applications using 
-                cutting-edge technologies. My goal is to help businesses thrive 
+                I specialize in building modern, scalable applications using
+                cutting-edge technologies. My goal is to help businesses thrive
                 in the digital world through innovative solutions.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
@@ -64,7 +67,7 @@ export default function About() {
                 </Button>
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="aspect-square overflow-hidden rounded-2xl bg-muted">
                 <img
@@ -99,7 +102,7 @@ export default function About() {
               Technologies I work with to bring your ideas to life
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {skills.map((skill) => (
               <div
@@ -125,7 +128,7 @@ export default function About() {
               My professional journey in software development
             </p>
           </div>
-          
+
           <div className="max-w-3xl mx-auto">
             <div className="space-y-8">
               {experience.map((job, index) => (
@@ -143,7 +146,9 @@ export default function About() {
                         {job.period}
                       </span>
                     </div>
-                    <p className="font-medium text-primary mb-2">{job.company}</p>
+                    <p className="font-medium text-primary mb-2">
+                      {job.company}
+                    </p>
                     <p className="text-muted-foreground">{job.description}</p>
                   </div>
                 </div>

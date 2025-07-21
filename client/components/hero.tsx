@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import { ArrowRight, Star } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Link } from "react-router-dom";
+import { ArrowRight, Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
@@ -10,7 +10,9 @@ export function Hero() {
           {/* Badge */}
           <div className="mb-8 inline-flex items-center rounded-full border px-3 py-1 text-sm">
             <Star className="mr-2 h-4 w-4 fill-primary text-primary" />
-            <span className="text-muted-foreground">Rated 5/5 by 100+ clients</span>
+            <span className="text-muted-foreground">
+              Rated 5/5 by 100+ clients
+            </span>
           </div>
 
           {/* Heading */}
@@ -22,9 +24,9 @@ export function Hero() {
 
           {/* Description */}
           <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-2xl mx-auto">
-            Transform your ideas into stunning digital experiences. I specialize in 
-            web development, UI/UX design, and digital solutions that help businesses 
-            grow and succeed online.
+            Transform your ideas into stunning digital experiences. I specialize
+            in web development, UI/UX design, and digital solutions that help
+            businesses grow and succeed online.
           </p>
 
           {/* CTA Buttons */}
@@ -35,7 +37,12 @@ export function Hero() {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild className="w-full sm:w-auto">
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="w-full sm:w-auto"
+            >
               <Link to="/#portfolio">View My Work</Link>
             </Button>
           </div>
@@ -43,15 +50,21 @@ export function Hero() {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3">
             <div>
-              <dt className="text-sm font-medium text-muted-foreground">Projects Completed</dt>
+              <dt className="text-sm font-medium text-muted-foreground">
+                Projects Completed
+              </dt>
               <dd className="text-3xl font-bold text-primary">150+</dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-muted-foreground">Happy Clients</dt>
+              <dt className="text-sm font-medium text-muted-foreground">
+                Happy Clients
+              </dt>
               <dd className="text-3xl font-bold text-primary">100+</dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-muted-foreground">Years Experience</dt>
+              <dt className="text-sm font-medium text-muted-foreground">
+                Years Experience
+              </dt>
               <dd className="text-3xl font-bold text-primary">5+</dd>
             </div>
           </div>

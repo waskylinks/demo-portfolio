@@ -1,31 +1,35 @@
-import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const testimonials = [
   {
-    content: "Working with FreelanceStudio was an absolute pleasure. They delivered a beautiful, functional website that exceeded our expectations. The attention to detail and communication throughout the project was outstanding.",
+    content:
+      "Working with FreelanceStudio was an absolute pleasure. They delivered a beautiful, functional website that exceeded our expectations. The attention to detail and communication throughout the project was outstanding.",
     author: "Sarah Johnson",
     role: "CEO, TechStart Inc.",
     rating: 5,
     avatar: "/placeholder.svg",
   },
   {
-    content: "The mobile app they developed for us has significantly improved our customer engagement. Professional, timely, and exactly what we needed. Highly recommend their services!",
+    content:
+      "The mobile app they developed for us has significantly improved our customer engagement. Professional, timely, and exactly what we needed. Highly recommend their services!",
     author: "Michael Chen",
     role: "Founder, FitLife",
     rating: 5,
     avatar: "/placeholder.svg",
   },
   {
-    content: "Exceptional work on our e-commerce platform. The user experience is fantastic and our sales have increased by 40% since launch. Worth every penny!",
+    content:
+      "Exceptional work on our e-commerce platform. The user experience is fantastic and our sales have increased by 40% since launch. Worth every penny!",
     author: "Emily Davis",
     role: "Marketing Director, StyleCo",
     rating: 5,
     avatar: "/placeholder.svg",
   },
   {
-    content: "From concept to completion, the process was smooth and professional. They understood our vision and brought it to life beautifully. Amazing developer!",
+    content:
+      "From concept to completion, the process was smooth and professional. They understood our vision and brought it to life beautifully. Amazing developer!",
     author: "David Wilson",
     role: "Product Manager, InnovateTech",
     rating: 5,
@@ -37,14 +41,14 @@ export function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1,
     );
   };
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    setCurrentIndex((prevIndex) =>
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
@@ -76,18 +80,18 @@ export function Testimonials() {
                   <div
                     key={index}
                     className={`transition-all duration-500 ease-in-out ${
-                      index === currentIndex 
-                        ? 'opacity-100 translate-x-0' 
-                        : 'opacity-0 absolute inset-0 translate-x-full'
+                      index === currentIndex
+                        ? "opacity-100 translate-x-0"
+                        : "opacity-0 absolute inset-0 translate-x-full"
                     }`}
                   >
                     <div className="p-8 md:p-12">
                       <Quote className="h-8 w-8 text-primary mb-6" />
-                      
+
                       <blockquote className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
                         "{testimonial.content}"
                       </blockquote>
-                      
+
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
                           <img
@@ -104,7 +108,7 @@ export function Testimonials() {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="flex space-x-1">
                           {[...Array(testimonial.rating)].map((_, i) => (
                             <Star
@@ -130,7 +134,7 @@ export function Testimonials() {
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
-            
+
             <Button
               variant="outline"
               size="sm"
@@ -149,7 +153,9 @@ export function Testimonials() {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`h-3 w-3 rounded-full transition-colors ${
-                  index === currentIndex ? 'bg-primary' : 'bg-muted-foreground/30'
+                  index === currentIndex
+                    ? "bg-primary"
+                    : "bg-muted-foreground/30"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />

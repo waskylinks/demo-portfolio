@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { ThemeToggle } from '@/components/theme-toggle';
-import { cn } from '@/lib/utils';
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { cn } from "@/lib/utils";
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Services', href: '/#services' },
-  { name: 'Portfolio', href: '/#portfolio' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/#services" },
+  { name: "Portfolio", href: "/#portfolio" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export function Navigation() {
@@ -18,11 +18,11 @@ export function Navigation() {
   const location = useLocation();
 
   const scrollToSection = (href: string) => {
-    if (href.startsWith('/#')) {
+    if (href.startsWith("/#")) {
       const elementId = href.substring(2);
       const element = document.getElementById(elementId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
     setMobileMenuOpen(false);
@@ -30,11 +30,16 @@ export function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Global">
+      <nav
+        className="container mx-auto px-4 sm:px-6 lg:px-8"
+        aria-label="Global"
+      >
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
-              <span className="text-2xl font-bold text-primary">FreelanceStudio</span>
+              <span className="text-2xl font-bold text-primary">
+                FreelanceStudio
+              </span>
             </Link>
           </div>
 
@@ -46,16 +51,16 @@ export function Navigation() {
                   key={item.name}
                   to={item.href}
                   onClick={(e) => {
-                    if (item.href.startsWith('/#')) {
+                    if (item.href.startsWith("/#")) {
                       e.preventDefault();
                       scrollToSection(item.href);
                     }
                   }}
                   className={cn(
-                    'px-3 py-2 rounded-md text-sm font-medium transition-colors hover:text-primary',
+                    "px-3 py-2 rounded-md text-sm font-medium transition-colors hover:text-primary",
                     location.pathname === item.href
-                      ? 'text-primary'
-                      : 'text-muted-foreground'
+                      ? "text-primary"
+                      : "text-muted-foreground",
                   )}
                 >
                   {item.name}
@@ -98,7 +103,7 @@ export function Navigation() {
                   key={item.name}
                   to={item.href}
                   onClick={(e) => {
-                    if (item.href.startsWith('/#')) {
+                    if (item.href.startsWith("/#")) {
                       e.preventDefault();
                       scrollToSection(item.href);
                     } else {
@@ -106,10 +111,10 @@ export function Navigation() {
                     }
                   }}
                   className={cn(
-                    'block px-3 py-2 rounded-md text-base font-medium transition-colors hover:text-primary',
+                    "block px-3 py-2 rounded-md text-base font-medium transition-colors hover:text-primary",
                     location.pathname === item.href
-                      ? 'text-primary'
-                      : 'text-muted-foreground'
+                      ? "text-primary"
+                      : "text-muted-foreground",
                   )}
                 >
                   {item.name}

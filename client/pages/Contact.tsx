@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Clock, CheckCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
+import { useState } from "react";
+import { Mail, Phone, MapPin, Send, Clock, CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 
 interface FormData {
   name: string;
@@ -21,10 +21,10 @@ interface FormErrors {
 
 export default function Contact() {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,23 +34,23 @@ export default function Contact() {
     const newErrors: FormErrors = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = "Name is required";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
 
     if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required';
+      newErrors.subject = "Subject is required";
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = "Message is required";
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters';
+      newErrors.message = "Message must be at least 10 characters";
     }
 
     setErrors(newErrors);
@@ -59,51 +59,53 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       setIsSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
     // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
-      setErrors(prev => ({ ...prev, [name]: undefined }));
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
 
   const contactInfo = [
     {
       icon: Mail,
-      label: 'Email',
-      value: 'hello@freelancestudio.com',
-      href: 'mailto:hello@freelancestudio.com',
+      label: "Email",
+      value: "hello@freelancestudio.com",
+      href: "mailto:hello@freelancestudio.com",
     },
     {
       icon: Phone,
-      label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      label: "Phone",
+      value: "+1 (555) 123-4567",
+      href: "tel:+15551234567",
     },
     {
       icon: MapPin,
-      label: 'Location',
-      value: 'San Francisco, CA',
-      href: '#',
+      label: "Location",
+      value: "San Francisco, CA",
+      href: "#",
     },
   ];
 
@@ -138,7 +140,7 @@ export default function Contact() {
               Get In Touch
             </h1>
             <p className="mt-6 text-xl text-muted-foreground">
-              Ready to start your project? Let's discuss how I can help bring 
+              Ready to start your project? Let's discuss how I can help bring
               your ideas to life.
             </p>
           </div>
@@ -163,12 +165,14 @@ export default function Contact() {
                     type="text"
                     value={formData.name}
                     onChange={handleChange}
-                    className={errors.name ? 'border-destructive' : ''}
+                    className={errors.name ? "border-destructive" : ""}
                     placeholder="Your full name"
                     required
                   />
                   {errors.name && (
-                    <p className="text-sm text-destructive mt-1">{errors.name}</p>
+                    <p className="text-sm text-destructive mt-1">
+                      {errors.name}
+                    </p>
                   )}
                 </div>
 
@@ -180,12 +184,14 @@ export default function Contact() {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={errors.email ? 'border-destructive' : ''}
+                    className={errors.email ? "border-destructive" : ""}
                     placeholder="your.email@example.com"
                     required
                   />
                   {errors.email && (
-                    <p className="text-sm text-destructive mt-1">{errors.email}</p>
+                    <p className="text-sm text-destructive mt-1">
+                      {errors.email}
+                    </p>
                   )}
                 </div>
 
@@ -197,12 +203,14 @@ export default function Contact() {
                     type="text"
                     value={formData.subject}
                     onChange={handleChange}
-                    className={errors.subject ? 'border-destructive' : ''}
+                    className={errors.subject ? "border-destructive" : ""}
                     placeholder="Project inquiry"
                     required
                   />
                   {errors.subject && (
-                    <p className="text-sm text-destructive mt-1">{errors.subject}</p>
+                    <p className="text-sm text-destructive mt-1">
+                      {errors.subject}
+                    </p>
                   )}
                 </div>
 
@@ -213,13 +221,15 @@ export default function Contact() {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    className={errors.message ? 'border-destructive' : ''}
+                    className={errors.message ? "border-destructive" : ""}
                     placeholder="Tell me about your project..."
                     rows={6}
                     required
                   />
                   {errors.message && (
-                    <p className="text-sm text-destructive mt-1">{errors.message}</p>
+                    <p className="text-sm text-destructive mt-1">
+                      {errors.message}
+                    </p>
                   )}
                 </div>
 
@@ -256,8 +266,10 @@ export default function Contact() {
                       <item.icon className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground">{item.label}</h3>
-                      {item.href === '#' ? (
+                      <h3 className="font-semibold text-foreground">
+                        {item.label}
+                      </h3>
+                      {item.href === "#" ? (
                         <p className="text-muted-foreground">{item.value}</p>
                       ) : (
                         <a
@@ -277,8 +289,8 @@ export default function Contact() {
                   Response Time
                 </h3>
                 <p className="text-muted-foreground">
-                  I typically respond to all inquiries within 24 hours. 
-                  For urgent matters, please call or send a message via LinkedIn.
+                  I typically respond to all inquiries within 24 hours. For
+                  urgent matters, please call or send a message via LinkedIn.
                 </p>
               </div>
 

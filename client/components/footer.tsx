@@ -1,36 +1,36 @@
-import { Link } from 'react-router-dom';
-import { Github, Linkedin, Twitter, Mail, MapPin, Phone } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { Github, Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
 
 const socialLinks = [
   {
-    name: 'GitHub',
-    href: '#',
+    name: "GitHub",
+    href: "#",
     icon: Github,
   },
   {
-    name: 'LinkedIn',
-    href: '#',
+    name: "LinkedIn",
+    href: "#",
     icon: Linkedin,
   },
   {
-    name: 'Twitter',
-    href: '#',
+    name: "Twitter",
+    href: "#",
     icon: Twitter,
   },
 ];
 
 const footerNavigation = {
   services: [
-    { name: 'Web Development', href: '/#services' },
-    { name: 'UI/UX Design', href: '/#services' },
-    { name: 'Mobile Apps', href: '/#services' },
-    { name: 'Consulting', href: '/#services' },
+    { name: "Web Development", href: "/#services" },
+    { name: "UI/UX Design", href: "/#services" },
+    { name: "Mobile Apps", href: "/#services" },
+    { name: "Consulting", href: "/#services" },
   ],
   company: [
-    { name: 'About', href: '/about' },
-    { name: 'Portfolio', href: '/#portfolio' },
-    { name: 'Contact', href: '/contact' },
-    { name: 'Blog', href: '#' },
+    { name: "About", href: "/about" },
+    { name: "Portfolio", href: "/#portfolio" },
+    { name: "Contact", href: "/contact" },
+    { name: "Blog", href: "#" },
   ],
 };
 
@@ -42,11 +42,13 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-primary">FreelanceStudio</span>
+              <span className="text-2xl font-bold text-primary">
+                FreelanceStudio
+              </span>
             </Link>
             <p className="mt-4 text-muted-foreground max-w-md">
-              Professional freelance services to help your business grow. 
-              From web development to design, we've got you covered.
+              Professional freelance services to help your business grow. From
+              web development to design, we've got you covered.
             </p>
             <div className="flex space-x-4 mt-6">
               {socialLinks.map((item) => (
