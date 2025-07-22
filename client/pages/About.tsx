@@ -5,18 +5,16 @@ const skills = [
   "React & Next.js",
   "TypeScript",
   "Node.js & Express",
-  "Python & Django",
   "UI/UX Design",
   "Mobile Development",
-  "Cloud Architecture",
   "Database Design",
 ];
 
 const experience = [
   {
-    title: "Senior Full-Stack Developer",
+    title: "Junior Full-Stack Developer",
     company: "TechCorp Solutions",
-    period: "2021 - Present",
+    period: "2024 - Present",
     description:
       "Led development of enterprise web applications serving 100k+ users. Mentored junior developers and established best practices.",
   },
@@ -45,7 +43,7 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                Hi, I'm Alex
+                Hi, I'm Likita
               </h1>
               <p className="mt-6 text-xl text-muted-foreground">
                 A passionate full-stack developer with 5+ years of experience
@@ -69,20 +67,21 @@ export default function About() {
             </div>
 
             <div className="relative">
-              <div className="aspect-square overflow-hidden rounded-2xl bg-muted">
+              <div className="">
                 <img
-                  src="/placeholder.svg"
+                  src="/Wasky.jpg"
                   alt="Alex Thompson"
                   className="h-full w-full object-cover"
                 />
               </div>
               {/* Floating card */}
               <div className="absolute -bottom-6 -left-6 bg-background border rounded-xl p-4 shadow-lg">
+          
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-semibold">Based in</p>
-                    <p className="text-muted-foreground">San Francisco, CA</p>
+                    <p className="text-muted-foreground">Gombe, Nigeria</p>
                   </div>
                 </div>
               </div>

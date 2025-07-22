@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
+import { Github, Linkedin, Twitter, Facebook, Mail, MapPin, Phone } from "lucide-react";
 
 const socialLinks = [
   {
@@ -16,6 +16,11 @@ const socialLinks = [
     name: "Twitter",
     href: "#",
     icon: Twitter,
+  },
+  {
+    name: "Facebook",
+    href: "#",
+    icon: Facebook,
   },
 ];
 
@@ -43,7 +48,7 @@ export function Footer() {
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center space-x-2">
               <span className="text-2xl font-bold text-primary">
-                FreelanceStudio
+                Wasky_Links
               </span>
             </Link>
             <p className="mt-4 text-muted-foreground max-w-md">
@@ -108,15 +113,15 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-muted-foreground">
             <div className="flex items-center space-x-2">
               <Mail className="h-4 w-4" />
-              <span>hello@freelancestudio.com</span>
+              <span>likitajoel@gmail.com</span>
             </div>
             <div className="flex items-center space-x-2">
               <Phone className="h-4 w-4" />
-              <span>+1 (555) 123-4567</span>
+              <span>+234 906 161 4369</span>
             </div>
             <div className="flex items-center space-x-2">
               <MapPin className="h-4 w-4" />
-              <span>San Francisco, CA</span>
+              <span>Gombe, Nigeria</span>
             </div>
           </div>
         </div>
@@ -124,7 +129,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-border">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} FreelanceStudio. All rights reserved.
+            © {new Date().getFullYear()} Wasky_Links. All rights reserved.
           </p>
         </div>
       </div>

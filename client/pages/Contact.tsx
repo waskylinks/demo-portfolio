@@ -92,20 +92,20 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "hello@freelancestudio.com",
-      href: "mailto:hello@freelancestudio.com",
+      value: "likitajoel@gmail.com",
+      href: "mailto:likitajoel@gmail..com",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+2349061614369",
+      href: "tel:+2349061614369",
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "San Francisco, CA",
-      href: "#",
+      value: "Gombe, Nigeria",
+      href: "https://www.google.com/maps/place/Gombe,+Nigeria",
     },
   ];
 
