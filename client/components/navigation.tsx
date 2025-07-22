@@ -38,7 +38,7 @@ export function Navigation() {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
               <span className="text-2xl font-bold text-primary">
-                FreelanceStudio
+                Wasky_Links
               </span>
             </Link>
           </div>

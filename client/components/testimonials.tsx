@@ -9,7 +9,7 @@ const testimonials = [
     author: "Sarah Johnson",
     role: "CEO, TechStart Inc.",
     rating: 5,
-    avatar: "/placeholder.svg",
+    avatar: "/channel-6.jpeg",
   },
   {
     content:
@@ -17,7 +17,7 @@ const testimonials = [
     author: "Michael Chen",
     role: "Founder, FitLife",
     rating: 5,
-    avatar: "/placeholder.svg",
+    avatar: "/channel-1.jpeg",
   },
   {
     content:
@@ -25,7 +25,7 @@ const testimonials = [
     author: "Emily Davis",
     role: "Marketing Director, StyleCo",
     rating: 5,
-    avatar: "/placeholder.svg",
+    avatar: "/channel-3.jpeg",
   },
   {
     content:
@@ -33,7 +33,7 @@ const testimonials = [
     author: "David Wilson",
     role: "Product Manager, InnovateTech",
     rating: 5,
-    avatar: "/placeholder.svg",
+    avatar: "/channel-2.jpeg",
   },
 ];
 
