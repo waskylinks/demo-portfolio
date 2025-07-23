@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import emailjs from "emailjs-com"; // ✅ Correct import (no curly braces)
+import emailjs from "emailjs-com"; 
 
 // Type for form fields
 interface FormData {
@@ -94,7 +94,7 @@ export default function Contact() {
       // Optional: send auto-reply to user (currently using same template)
       await emailjs.send(
         "Wasky_Links",
-        "Wasky_Links_Contact",
+        "Wasky_Links_Reply",
         fullFormData,
         "kmmyxPwNaFJ8_EO5a"
       );

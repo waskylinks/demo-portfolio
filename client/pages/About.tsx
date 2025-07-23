@@ -12,7 +12,7 @@ const skills = [
 
 const experience = [
   {
-    title: "Junior Full-Stack Developer",
+    title: "Senior Full-Stack Developer",
     company: "TechCorp Solutions",
     period: "2024 - Present",
     description:

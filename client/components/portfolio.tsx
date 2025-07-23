@@ -6,54 +6,54 @@ const projects = [
     title: "E-Commerce Platform",
     description:
       "A modern e-commerce solution built with React and Node.js, featuring real-time inventory management and secure payments.",
-    image: "/placeholder.svg",
+    image: "/shopify.png",
     technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-    liveUrl: "#",
+    liveUrl: "https://shopify.com/",
     githubUrl: "#",
   },
   {
     title: "Healthcare Dashboard",
     description:
       "A comprehensive dashboard for healthcare providers to manage patient data, appointments, and medical records.",
-    image: "/placeholder.svg",
+    image: "/health.png",
     technologies: ["Vue.js", "Express", "PostgreSQL", "D3.js"],
-    liveUrl: "#",
+    liveUrl: "https://fmohconnect.gov.ng/msdat/",
     githubUrl: "#",
   },
   {
     title: "Mobile Banking App",
     description:
       "Secure and user-friendly mobile banking application with biometric authentication and real-time transactions.",
-    image: "/placeholder.svg",
+    image: "/bank.png",
     technologies: ["React Native", "Firebase", "TypeScript"],
-    liveUrl: "#",
+    liveUrl: "https://kudabank.com/",
     githubUrl: "#",
   },
   {
     title: "SaaS Analytics Tool",
     description:
       "Advanced analytics platform helping businesses track KPIs and make data-driven decisions with beautiful visualizations.",
-    image: "/placeholder.svg",
+    image: "/saas.png",
     technologies: ["Next.js", "Python", "TailwindCSS", "Chart.js"],
-    liveUrl: "#",
+    liveUrl: "https://looker.com/",
     githubUrl: "#",
   },
   {
     title: "Real Estate Platform",
     description:
       "Modern real estate platform with virtual tours, advanced search filters, and integrated CRM for agents.",
-    image: "/placeholder.svg",
+    image: "/estate.png",
     technologies: ["React", "Django", "PostgreSQL", "AWS"],
-    liveUrl: "#",
+    liveUrl: "https://propertypro.ng",
     githubUrl: "#",
   },
   {
     title: "Social Media Dashboard",
     description:
       "Comprehensive social media management tool for scheduling posts, analytics, and team collaboration.",
-    image: "/placeholder.svg",
+    image: "/facebook.png",
     technologies: ["Angular", "NestJS", "Redis", "Socket.io"],
-    liveUrl: "#",
+    liveUrl: "https://facebook.com/",
     githubUrl: "#",
   },
 ];
@@ -68,7 +68,7 @@ export function Portfolio() {
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             A showcase of projects I've built for clients across various
-            industries
+            industries. <strong>Projects shown here are for demo only.</strong>
           </p>
         </div>
 

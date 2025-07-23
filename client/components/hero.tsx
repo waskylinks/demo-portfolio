@@ -19,14 +19,14 @@ export function Hero() {
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
             Professional
             <span className="text-primary"> Freelance </span>
-            Services
+            Services.
           </h1>
 
           {/* Description */}
           <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-2xl mx-auto">
             Transform your ideas into stunning digital experiences. I specialize
             in web development, UI/UX design, and digital solutions that help
-            businesses grow and succeed online.
+            businesses grow and succeed online. This is a demo portfolio.
           </p>
 
           {/* CTA Buttons */}
