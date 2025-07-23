@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import emailjs from "emailjs-com"; // ✅ Correct import (no curly braces)
 
+// Type for form fields
 interface FormData {
   name: string;
   email: string;
@@ -12,6 +14,7 @@ interface FormData {
   message: string;
 }
 
+// Type for form errors
 interface FormErrors {
   name?: string;
   email?: string;
@@ -20,33 +23,34 @@ interface FormErrors {
 }
 
 export default function Contact() {
+  // Form state
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
+  // Validation errors
   const [errors, setErrors] = useState<FormErrors>({});
+  // Submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Validate form fields before submitting
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
     }
-
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Email is invalid";
     }
-
     if (!formData.subject.trim()) {
       newErrors.subject = "Subject is required";
     }
-
     if (!formData.message.trim()) {
       newErrors.message = "Message is required";
     } else if (formData.message.trim().length < 10) {
@@ -57,43 +61,80 @@ export default function Contact() {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Stop if validation fails
     if (!validateForm()) return;
 
     setIsSubmitting(true);
 
-    // Simulate form submission
+    // Add timestamp for email template
+    const fullFormData = {
+      ...formData,
+      time: new Date().toLocaleString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+      }),
+    };
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // Send email to you
+      await emailjs.send(
+        "Wasky_Links", // service ID
+        "Wasky_Links_Contact", // template ID
+        fullFormData,
+        "kmmyxPwNaFJ8_EO5a" // user/public key
+      );
+
+      // Optional: send auto-reply to user (currently using same template)
+      await emailjs.send(
+        "Wasky_Links",
+        "Wasky_Links_Contact",
+        fullFormData,
+        "kmmyxPwNaFJ8_EO5a"
+      );
+
+      // Reset form after success
       setIsSubmitted(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Email send failed:", error);
+      alert("Failed to send message. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  // Handle input changes and clear errors dynamically
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear error when user starts typing
+    // Clear error message for the field as user types
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
 
+  // Static contact information for display
   const contactInfo = [
     {
       icon: Mail,
       label: "Email",
       value: "likitajoel@gmail.com",
-      href: "mailto:likitajoel@gmail..com",
+      href: "mailto:likitajoel@gmail.com",
     },
     {
       icon: Phone,
@@ -109,6 +150,7 @@ export default function Contact() {
     },
   ];
 
+  // Success message after submission
   if (isSubmitted) {
     return (
       <div className="py-16 min-h-[60vh] flex items-center justify-center">
@@ -130,6 +172,7 @@ export default function Contact() {
     );
   }
 
+  // Render form & contact information
   return (
     <div className="py-16">
       {/* Header */}
@@ -157,6 +200,7 @@ export default function Contact() {
                 Send Me a Message
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Name Field */}
                 <div>
                   <Label htmlFor="name">Name *</Label>
                   <Input
@@ -176,6 +220,7 @@ export default function Contact() {
                   )}
                 </div>
 
+                {/* Email Field */}
                 <div>
                   <Label htmlFor="email">Email *</Label>
                   <Input
@@ -195,6 +240,7 @@ export default function Contact() {
                   )}
                 </div>
 
+                {/* Subject Field */}
                 <div>
                   <Label htmlFor="subject">Subject *</Label>
                   <Input
@@ -214,6 +260,7 @@ export default function Contact() {
                   )}
                 </div>
 
+                {/* Message Field */}
                 <div>
                   <Label htmlFor="message">Message *</Label>
                   <Textarea
@@ -233,6 +280,7 @@ export default function Contact() {
                   )}
                 </div>
 
+                {/* Submit Button */}
                 <Button
                   type="submit"
                   size="lg"
