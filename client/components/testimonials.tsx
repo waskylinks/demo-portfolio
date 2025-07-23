@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 const testimonials = [
   {
     content:
-      "Working with FreelanceStudio was an absolute pleasure. They delivered a beautiful, functional website that exceeded our expectations. The attention to detail and communication throughout the project was outstanding.",
+      "Working with Wasky_Links was an absolute pleasure. He delivered a beautiful, functional website that exceeded our expectations. The attention to detail and communication throughout the project was outstanding.",
     author: "Sarah Johnson",
     role: "CEO, TechStart Inc.",
     rating: 5,
@@ -13,7 +13,7 @@ const testimonials = [
   },
   {
     content:
-      "The mobile app they developed for us has significantly improved our customer engagement. Professional, timely, and exactly what we needed. Highly recommend their services!",
+      "The mobile app he developed for us has significantly improved our customer engagement. Professional, timely, and exactly what we needed. Highly recommend his services!",
     author: "Michael Chen",
     role: "Founder, FitLife",
     rating: 5,
@@ -29,7 +29,7 @@ const testimonials = [
   },
   {
     content:
-      "From concept to completion, the process was smooth and professional. They understood our vision and brought it to life beautifully. Amazing developer!",
+      "From concept to completion, the process was smooth and professional. He understood our vision and brought it to life beautifully. Amazing developer!",
     author: "David Wilson",
     role: "Product Manager, InnovateTech",
     rating: 5,

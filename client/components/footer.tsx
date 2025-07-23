@@ -4,22 +4,22 @@ import { Github, Linkedin, Twitter, Facebook, Mail, MapPin, Phone } from "lucide
 const socialLinks = [
   {
     name: "GitHub",
-    href: "#",
+    href: "https://github.com/waskylinks/",
     icon: Github,
   },
   {
     name: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/in/joel-likita-barnabas?utm_source=source=share&utm_campaign=share_via&utm_content=profile&utm_medium=andriod_app/",
     icon: Linkedin,
   },
   {
     name: "Twitter",
-    href: "#",
+    href: "https://x.com/Jay_slowasky?t=NKkwustt-Fc5FBtDnG4LxA&s=09/",
     icon: Twitter,
   },
   {
     name: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/profile.php?id=100083026935568/",
     icon: Facebook,
   },
 ];
