@@ -37,7 +37,7 @@ export function Navigation() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
-              <span className="text-5xl font-artistic">
+              <span className="text-2xl font-bold text-primary">
                 Wasky_Links
               </span>
             </Link>
