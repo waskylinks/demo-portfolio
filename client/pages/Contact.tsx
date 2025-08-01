@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import emailjs from "emailjs-com"; 
+import emailjs from "emailjs-com";
 
 // Type for form fields
 interface FormData {
@@ -23,54 +23,63 @@ interface FormErrors {
 }
 
 export default function Contact() {
-  // Form state
+  // State for form data
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-  // Validation errors
+
+  // State to track validation errors for each field
   const [errors, setErrors] = useState<FormErrors>({});
+
   // Submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Validate form fields before submitting
+  // Validate all fields and set error messages for empty or invalid inputs
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
+    // Name must not be empty
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
     }
+    // Email must not be empty and must match a basic email regex pattern
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Email is invalid";
     }
+    // Subject must not be empty
     if (!formData.subject.trim()) {
       newErrors.subject = "Subject is required";
     }
+    // Message must not be empty and must be at least 10 characters
     if (!formData.message.trim()) {
       newErrors.message = "Message is required";
     } else if (formData.message.trim().length < 10) {
       newErrors.message = "Message must be at least 10 characters";
     }
 
+    // Update errors state to show messages inline
     setErrors(newErrors);
+
+    // Return true if no errors
     return Object.keys(newErrors).length === 0;
   };
 
-  // Handle form submission
+  // Handle form submission event
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Stop if validation fails
+    // Prevent submission if validation fails
     if (!validateForm()) return;
 
     setIsSubmitting(true);
 
-    // Add timestamp for email template
+    // Include current date/time in the email data
     const fullFormData = {
       ...formData,
       time: new Date().toLocaleString("en-US", {
@@ -83,15 +92,15 @@ export default function Contact() {
     };
 
     try {
-      // Send email to you
+      // Send email to site owner using emailjs
       await emailjs.send(
-        "Wasky_Links", // service ID
-        "Wasky_Links_Contact", // template ID
+        "Wasky_Links", // service ID (unchanged)
+        "Wasky_Links_Contact", // template ID (unchanged)
         fullFormData,
-        "kmmyxPwNaFJ8_EO5a" // user/public key
+        "kmmyxPwNaFJ8_EO5a" // user/public key (unchanged)
       );
 
-      // Optional: send auto-reply to user (currently using same template)
+      // Optional: send auto-reply email to user
       await emailjs.send(
         "Wasky_Links",
         "Wasky_Links_Reply",
@@ -99,7 +108,7 @@ export default function Contact() {
         "kmmyxPwNaFJ8_EO5a"
       );
 
-      // Reset form after success
+      // Reset form on success and show success message
       setIsSubmitted(true);
       setFormData({
         name: "",
@@ -115,14 +124,14 @@ export default function Contact() {
     }
   };
 
-  // Handle input changes and clear errors dynamically
+  // Handle input changes and clear errors for the specific field as user types
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear error message for the field as user types
+    // Clear error message dynamically when user corrects input
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -150,7 +159,7 @@ export default function Contact() {
     },
   ];
 
-  // Success message after submission
+  // Show success message screen after submission
   if (isSubmitted) {
     return (
       <div className="py-16 min-h-[60vh] flex items-center justify-center">
@@ -172,7 +181,7 @@ export default function Contact() {
     );
   }
 
-  // Render form & contact information
+  // Main form render
   return (
     <div className="py-16">
       {/* Header */}
@@ -199,7 +208,7 @@ export default function Contact() {
               <h2 className="text-2xl font-bold text-foreground mb-6">
                 Send Me a Message
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 {/* Name Field */}
                 <div>
                   <Label htmlFor="name">Name *</Label>
@@ -213,6 +222,7 @@ export default function Contact() {
                     placeholder="Your full name"
                     required
                   />
+                  {/* Show error below input if present */}
                   {errors.name && (
                     <p className="text-sm text-destructive mt-1">
                       {errors.name}
@@ -220,7 +230,7 @@ export default function Contact() {
                   )}
                 </div>
 
-                {/* Email Field */}
+                {/* Email Field - disabled if Name is empty */}
                 <div>
                   <Label htmlFor="email">Email *</Label>
                   <Input
@@ -232,7 +242,9 @@ export default function Contact() {
                     className={errors.email ? "border-destructive" : ""}
                     placeholder="your.email@example.com"
                     required
+                    disabled={!formData.name.trim()} // Disabled if name empty
                   />
+                  {/* Show error below input if present */}
                   {errors.email && (
                     <p className="text-sm text-destructive mt-1">
                       {errors.email}
@@ -240,7 +252,7 @@ export default function Contact() {
                   )}
                 </div>
 
-                {/* Subject Field */}
+                {/* Subject Field - disabled if Name is empty */}
                 <div>
                   <Label htmlFor="subject">Subject *</Label>
                   <Input
@@ -252,7 +264,9 @@ export default function Contact() {
                     className={errors.subject ? "border-destructive" : ""}
                     placeholder="Project inquiry"
                     required
+                    disabled={!formData.name.trim()} // Disabled if name empty
                   />
+                  {/* Show error below input if present */}
                   {errors.subject && (
                     <p className="text-sm text-destructive mt-1">
                       {errors.subject}
@@ -260,7 +274,7 @@ export default function Contact() {
                   )}
                 </div>
 
-                {/* Message Field */}
+                {/* Message Field - disabled if Name is empty */}
                 <div>
                   <Label htmlFor="message">Message *</Label>
                   <Textarea
@@ -272,7 +286,9 @@ export default function Contact() {
                     placeholder="Tell me about your project..."
                     rows={6}
                     required
+                    disabled={!formData.name.trim()} // Disabled if name empty
                   />
+                  {/* Show error below input if present */}
                   {errors.message && (
                     <p className="text-sm text-destructive mt-1">
                       {errors.message}
