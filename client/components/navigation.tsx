@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";                // React hooks for state and lifecycle events
-import { Link, useLocation } from "react-router-dom";       // Link for routing, useLocation for detecting route changes
+import { Link, useLocation, useNavigate } from "react-router-dom"; // Link for routing, useLocation for detecting route changes, useNavigate for programmatic navigation
 import { Menu, X } from "lucide-react";                     // Icons for mobile navigation toggle
 import { Button } from "@/components/ui/button";            // Button component from UI library
 import { ThemeToggle } from "@/components/theme-toggle";    // Theme switch (light/dark mode)
@@ -17,19 +17,38 @@ const navigation = [
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // State for toggling mobile menu visibility
   const location = useLocation();                             // Current route info
+  const navigate = useNavigate();                             // For programmatic navigation
 
   // 🔹 Scroll to top smoothly whenever a route changes (non-anchor links)
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });          // Smooth scroll to top
   }, [location.pathname]);                                    // Runs when only pathname (not hash) changes
 
+  // 🔹 Smooth scroll to hash sections when hash changes (like #services or #portfolio)
+  useEffect(() => {
+    if (location.hash) {                                      // Check if there is a hash
+      const elementId = location.hash.replace("#", "");       // Remove # to get pure id
+      const element = document.getElementById(elementId);     // Get element by ID
+      if (element) {
+        // Delay scrolling slightly to ensure DOM is ready after navigation
+        setTimeout(() => element.scrollIntoView({ behavior: "smooth" }), 50);
+      }
+    }
+  }, [location.hash]);                                        // Runs whenever hash changes
+
   // Function to smoothly scroll to specific section (for in-page # links)
   const scrollToSection = (href: string) => {
     if (href.startsWith("/#")) {                             // Check if it's an in-page anchor link
-      const elementId = href.substring(2);                   // Remove "/#" to get pure id
-      const element = document.getElementById(elementId);    // Get element by ID
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });      // Smoothly scroll to that element
+      const targetHash = href.replace("/#", "#");            // Convert "/#id" to "#id"
+      if (location.pathname !== "/") {                       // If not already on home page
+        // Navigate to home with hash, triggering the hash effect above
+        navigate("/" + targetHash);
+      } else {
+        const elementId = targetHash.replace("#", "");        // Remove "#" to get pure id
+        const element = document.getElementById(elementId);   // Get element by ID
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });     // Smoothly scroll to that element
+        }
       }
     }
     setMobileMenuOpen(false);                                // Close mobile menu after clicking
@@ -56,9 +75,9 @@ export function Navigation() {
                   key={item.name}                                // Unique key for React rendering
                   to={item.href}                                 // Destination link
                   onClick={(e) => {
-                    if (item.href.startsWith("/#")) {            // If anchor link (same page)
+                    if (item.href.startsWith("/#")) {            // If anchor link (same page or with hash)
                       e.preventDefault();                        // Prevent page reload
-                      scrollToSection(item.href);                // Call smooth scroll
+                      scrollToSection(item.href);                // Call smooth scroll or navigate home then scroll
                     }
                   }}
                   className={cn(                                 // Conditional styling
@@ -112,7 +131,7 @@ export function Navigation() {
                   onClick={(e) => {
                     if (item.href.startsWith("/#")) {            // If anchor link
                       e.preventDefault();                        // Stop default jump
-                      scrollToSection(item.href);                // Smooth scroll
+                      scrollToSection(item.href);                // Smooth scroll or navigate home then scroll
                     } else {
                       setMobileMenuOpen(false);                  // Close menu on normal link click
                     }
